@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-// TODO: Add SDKs for Firebase products that you want to usefir
+//* TODO: Add SDKs for Firebase products that you want to usefir
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -12,7 +12,7 @@ const firebaseConfig = {
   projectId: "netflixgpt-60e8d",
   storageBucket: "netflixgpt-60e8d.firebasestorage.app",
   messagingSenderId: "290326379011",
-  appId: "1:290326379011:web:41ef03885db440c0edac36"
+  appId: "1:290326379011:web:41ef03885db440c0edac36",
 };
 
 // Initialize Firebase

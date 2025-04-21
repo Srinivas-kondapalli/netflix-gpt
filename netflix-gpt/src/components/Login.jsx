@@ -7,27 +7,24 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import {useNavigate} from "react-router";
-import {useDispatch} from "react-redux";
-import {addUser} from "../utils/userSlice";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import {IMG, USER_AVTHAR} from "../utils/constants";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  const navigate = useNavigate();
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handleButtonClick = () => {
     //validate the form data
 
-    console.log(name);
     const message = checkValidateData(
       email.current.value,
       password.current.value
       // name.current.value
     );
-    console.log(message);
     setErrorMessage(message);
     if (message) return;
     //Sign In  / Sign Up
@@ -41,20 +38,27 @@ const dispatch = useDispatch()
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, 
-            photoURL: "https://media.licdn.com/dms/image/v2/D5603AQHb5837DdMxyQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1708713187413?e=1750291200&v=beta&t=5M40dU0RQ6Q8zcRRr2xYVW6g9O8UnwlliYmyrFjsyQA"
-          }).then(() => {
-            // Profile updated!
-            
-         const { uid, email, displayName,photoURL } = auth.currentUser;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName ,photoURL:photoURL}));
-        navigate("/browse");
-            
-          }).catch((error) => {
-          setErrorMessage(error.message)
-          });
+            displayName: name.current.value,
+            photoURL:USER_AVTHAR,
+          })
+            .then(() => {
+              // Profile updated!
 
-          console.log(user);
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+            
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
+
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -70,9 +74,7 @@ const dispatch = useDispatch()
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          navigate("/browse");
 
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -89,7 +91,7 @@ const dispatch = useDispatch()
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/fa4630b1-ca1e-4788-94a9-eccef9f7af86/web/IN-en-20250407-TRIFECTA-perspective_43f6a235-9f3d-47ef-87e0-46185ab6a7e0_medium.jpg"
+          src={IMG}
           alt="logo"
         />
       </div>
