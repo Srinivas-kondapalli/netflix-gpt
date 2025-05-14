@@ -2,7 +2,7 @@ import React from 'react'
 
 const VedioTitle = ({title,overview}) => {
   return (
-    <div className=' w-screen aspect-video pt-[14%] px-14 absolute text-white bg-gradient-to-r from-black'>
+    <div className=' w-screen  pt-[25%] px-14 absolute text-white bg-gradient-to-r from-black'>
       <h1 className='text-4xl font-bold'>{title}</h1>
       <p className='py-6 text-sg w-1/4'>{overview}</p>
       <div >

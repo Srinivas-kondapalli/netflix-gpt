@@ -30,6 +30,12 @@
 - Update Store with Trailer Vedio Data
 - Embedded the youtube vedio and make it autoplay amd mute 
 - Tailwind classes to make main container look awesome
+- Build Secondary Component
+-MovieList
+- Movie Card
+- Found out ImageCDN Url
+- made the Browse page amazing
+- usepopular custom hook
 
 # Features
 

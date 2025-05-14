@@ -40,7 +40,7 @@ const Header = () => {
       .then(() => {
         // Sign-out successful.
            })
-      .catch((error) => {
+      .catch(() => {
         // An error happened.
         navigate("/error");
       });
